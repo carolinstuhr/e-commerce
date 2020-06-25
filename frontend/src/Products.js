@@ -10,9 +10,8 @@ import Tanktopm from "./images/product_tanktopm.jpg";
 import Shirtm from "./images/product_shirtm.jpg";
 import Shirtw from "./images/product_shirtw.jpg";
 
-export default function Products({ categorySelected }) {
+export default function Products({ categorySelected, inputAmount, amount }) {
   const [products, setProducts] = useState([]);
-  const [amount, setAmount] = useState("1");
 
   useEffect(() => {
     fetch("http://localhost:8040/products")
@@ -49,10 +48,10 @@ export default function Products({ categorySelected }) {
           <CenteredContainer key={product._id}>
             {categorySelected === product.categoryId && (
               <Card>
-                {product._id === "5ea05d76b9130b381db647c7" && (
+                {product._id === "5ef38036ccb2573134045318" && (
                   <img src={Jeansgreyw} alt="jeans grey female" />
                 )}
-                {product._id === "5ea05d99b9130b381db647c8" && (
+                {product._id === "5ef38036ccb2573134045317" && (
                   <img src={Jeansbluew} alt="jeans blue female" />
                 )}
                 {product._id === "5ea05dbfb9130b381db647c9" && (
@@ -139,7 +138,7 @@ export default function Products({ categorySelected }) {
     </>
   );
   function changeAmount(event) {
-    setAmount(event.target.value);
+    inputAmount(event.target.value);
   }
 }
 

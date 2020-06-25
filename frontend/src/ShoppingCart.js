@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 export default function ShoppingCart() {
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [amountUpdate, setAmountUpdate] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8040/shoppingcart")
@@ -35,19 +34,32 @@ export default function ShoppingCart() {
           <ul key={cart._id}>
             <li>
               {cart.product && cart.product.name}
-              <input placeholder={cart.amount} onChange={handleAmountUpdate} />
-              <button onClick={() => updateAmount(amountUpdate, cart._id)}>
+              <input
+                placeholder={cart.amount}
+                onChange={(event) => handleAmountUpdate(event, cart)}
+                value={cart.amount}
+                name="amountField"
+              />
+              <button onClick={() => updateAmount(cart.amount, cart._id)}>
                 update amount
               </button>
-              {console.log(amountUpdate)}
             </li>
           </ul>
         ))}
       </main>
+      {console.log(shoppingCart)}
     </>
   );
 
-  function handleAmountUpdate(event) {
-    setAmountUpdate(event.target.value);
+  function handleAmountUpdate(event, cart) {
+    let newAmount = event.target.value;
+    let index = shoppingCart.indexOf(cart);
+    console.log(index);
+    console.log(cart);
+    setShoppingCart([
+      ...shoppingCart.slice(0, index),
+      { ...cart, amount: newAmount },
+      ...shoppingCart.slice(index + 1),
+    ]);
   }
 }

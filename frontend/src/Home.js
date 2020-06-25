@@ -23,12 +23,12 @@ export default function Home({ clickCategory }) {
         <CenteredContainer>
           {categories.map((category) => (
             <Card key={category._id}>
-              {category.id === 1 && <img src={Jeansm} alt="jeans male" />}
-              {category.id === 2 && <img src={Jeansw} alt="jeans female" />}
-              {category.id === 3 && <img src={Shirtm} alt="shirts male" />}
-              {category.id === 4 && <img src={Shirtw} alt="shirts female" />}
-              {category.id === 5 && <img src={Hoodiem} alt="hoodie male" />}
-              {category.id === 6 && <img src={Hoodiew} alt="hoodie female" />}
+              {category.id === 1 && <img src={Hoodiew} alt="hoodie female" />}
+              {category.id === 2 && <img src={Hoodiem} alt="hoodie male" />}
+              {category.id === 3 && <img src={Shirtw} alt="shirts female" />}
+              {category.id === 4 && <img src={Shirtm} alt="shirts male" />}
+              {category.id === 5 && <img src={Jeansw} alt="jeans female" />}
+              {category.id === 6 && <img src={Jeansm} alt="jeans male" />}
               <h2>{category.name}</h2>
               <p>{category.description}</p>
               <ButtonStyled onClick={() => clickCategory(category.id)}>

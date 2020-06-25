@@ -8,6 +8,7 @@ import ShoppingCart from "./ShoppingCart";
 
 export default function App() {
   const [categorySelected, setCategorySelected] = useState("");
+  const [amount, setAmount] = useState("1");
 
   return (
     <>
@@ -17,7 +18,11 @@ export default function App() {
           <Home clickCategory={setCategory} />
         </Route>
         <Route path="/products">
-          <Products categorySelected={categorySelected} />
+          <Products
+            categorySelected={categorySelected}
+            inputAmount={updateAmount}
+            amount={amount}
+          />
         </Route>
         <Route path="/shoppingcart">
           <ShoppingCart />
@@ -26,6 +31,9 @@ export default function App() {
       <Footer setCategorySelected={setCategorySelected} />
     </>
   );
+  function updateAmount(amount) {
+    setAmount(amount);
+  }
 
   function setCategory(categoryId) {
     setCategorySelected(categoryId);

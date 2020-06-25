@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5ea05c5cb9130b381db647c1"},"name":"jeans","description":"men","id":{"$numberInt":"1"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ea05c94b9130b381db647c2"},"name":"jeans","description":"women","id":{"$numberInt":"2"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ea05cdfb9130b381db647c3"},"name":"shirts","description":"men","id":{"$numberInt":"3"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ea05cf5b9130b381db647c4"},"name":"shirts","description":"women","id":{"$numberInt":"4"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ea05d03b9130b381db647c5"},"name":"hoodies","description":"men","id":{"$numberInt":"5"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ea05d0ab9130b381db647c6"},"name":"hoodies","description":"women","id":{"$numberInt":"6"},"__v":{"$numberInt":"0"}}

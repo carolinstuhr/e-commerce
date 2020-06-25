@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5ea2bc1da50a080b5ecb0dd2"},"name":"Levis denim","price":{"$numberInt":"60"},"amount":{"$numberInt":"2"},"customerAdress":"Musterstraße 10, 12345 Musterdorf","totalPrice":{"$numberInt":"120"},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ea2bc9da50a080b5ecb0dd3"},"name":"Adidas tanktop","price":{"$numberInt":"29"},"amount":{"$numberInt":"1"},"customerAdress":"Musterstraße 10, 12345 Musterdorf","totalPrice":{"$numberInt":"29"},"__v":{"$numberInt":"0"}}

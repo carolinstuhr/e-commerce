@@ -1,0 +1,86 @@
+[
+  ["categories"],
+  [
+    { "name": "hoodies", "description": "female", "id": 1 },
+    { "name": "hoodies", "description": "male", "id": 2 },
+    { "name": "shirts", "description": "female", "id": 3 },
+    { "name": "shirts", "description": "male", "id": 4 },
+    { "name": "jeans", "description": "female", "id": 5 },
+    { "name": "jeans", "description": "male", "id": 6 }
+  ],
+  ["products"],
+  [
+    {
+      "name": "nike",
+      "description": "oversized",
+      "price": 40,
+      "categoryId": 1
+    },
+    {
+      "name": "adidas",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 1
+    },
+    {
+      "name": "nike",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 2
+    },
+    {
+      "name": "adidas",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 2
+    },
+    {
+      "name": "nike",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 3
+    },
+    {
+      "name": "adidas",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 3
+    },
+    {
+      "name": "nike",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 4
+    },
+    {
+      "name": "adidas",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 4
+    },
+    {
+      "name": "levis",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 5
+    },
+    {
+      "name": "Agolde",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 5
+    },
+    {
+      "name": "levis",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 6
+    },
+    {
+      "name": "Agolde",
+      "description": "oversized",
+      "price": 30,
+      "categoryId": 6
+    }
+  ]
+]
