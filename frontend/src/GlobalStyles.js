@@ -1,10 +1,11 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 * {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    font-family: 'Barlow', sans-serif;
 }
 
 #root {
@@ -14,7 +15,7 @@ export default createGlobalStyle`
 }
 
 main {
-    padding: .75em;
+    padding-left: 4px;
     overflow: scroll;
 }
 
@@ -22,17 +23,9 @@ header {
     display: flex; 
     justify-content: center; 
     align-items: center;
-    background: #fff;
+    background: #ECEBEA;
     color: #000;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
 }
-
-footer {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    background: hotpink;
-    color: white;
-}
-`;
+`

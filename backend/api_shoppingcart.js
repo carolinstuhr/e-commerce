@@ -18,6 +18,7 @@ router.post("/", (request, response) => {
         product: product,
         productId: request.body.productId,
         amount: request.body.amount,
+        size: request.body.size,
       });
     })
     .then(() => response.json({ created: true }))

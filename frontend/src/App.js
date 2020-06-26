@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import GlobalStyles from "./GlobalStyles";
-import Home from "./Home";
-import Footer from "./Footer";
-import Products from "./Products";
-import { Route, Switch } from "react-router-dom";
-import ShoppingCart from "./ShoppingCart";
+import React, { useState } from 'react'
+import GlobalStyles from './GlobalStyles'
+import Home from './Home'
+import Footer from './Footer'
+import Products from './Products/Products'
+import { Route, Switch } from 'react-router-dom'
+import ShoppingCart from './ShoppingCart'
 
 export default function App() {
-  const [categorySelected, setCategorySelected] = useState("");
-  const [amount, setAmount] = useState("1");
+  const [categorySelected, setCategorySelected] = useState('')
 
   return (
     <>
@@ -18,11 +17,7 @@ export default function App() {
           <Home clickCategory={setCategory} />
         </Route>
         <Route path="/products">
-          <Products
-            categorySelected={categorySelected}
-            inputAmount={updateAmount}
-            amount={amount}
-          />
+          <Products categorySelected={categorySelected} />
         </Route>
         <Route path="/shoppingcart">
           <ShoppingCart />
@@ -30,12 +25,9 @@ export default function App() {
       </Switch>
       <Footer setCategorySelected={setCategorySelected} />
     </>
-  );
-  function updateAmount(amount) {
-    setAmount(amount);
-  }
+  )
 
   function setCategory(categoryId) {
-    setCategorySelected(categoryId);
+    setCategorySelected(categoryId)
   }
 }
