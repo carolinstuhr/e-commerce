@@ -39,6 +39,9 @@ const productScheme = {
   categoryId: {
     type: Number,
   },
+  image: {
+    type: String,
+  },
 };
 
 const shoppingCartScheme = {
