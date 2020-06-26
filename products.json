@@ -1,8 +1,0 @@
-{"_id":{"$oid":"5ea05d76b9130b381db647c7"},"name":"Levis denim","description":"grey","price":{"$numberInt":"80"},"categoryId":{"$numberInt":"1"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05d99b9130b381db647c8"},"name":"Levis denim","description":"blue","price":{"$numberInt":"90"},"categoryId":{"$numberInt":"2"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05dbfb9130b381db647c9"},"name":"Levis denim","description":"grey","price":{"$numberInt":"90"},"categoryId":{"$numberInt":"2"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05e15b9130b381db647ca"},"name":"Adidas tanktop","description":"hotpink","price":{"$numberInt":"29"},"categoryId":{"$numberInt":"4"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05e2bb9130b381db647cb"},"name":"Adidas tanktop","description":"purple","price":{"$numberInt":"29"},"categoryId":{"$numberInt":"3"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05e38b9130b381db647cc"},"name":"Adidas shirt","description":"blue","price":{"$numberInt":"29"},"categoryId":{"$numberInt":"3"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05e54b9130b381db647cd"},"name":"Nike zip","description":"blue","price":{"$numberInt":"60"},"categoryId":{"$numberInt":"5"},"__v":{"$numberInt":"0"}}
-{"_id":{"$oid":"5ea05e70b9130b381db647ce"},"name":"Nike zipw","description":"flower print","price":{"$numberInt":"75"},"categoryId":{"$numberInt":"6"},"__v":{"$numberInt":"0"}}

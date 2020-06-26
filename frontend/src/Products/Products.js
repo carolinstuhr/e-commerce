@@ -68,13 +68,20 @@ export default function Products({ categorySelected }) {
         {areDetailsVisible && (
           <DetailsSection>
             <CloseIcon onClick={() => setAreDetailsVisible(false)} />
-            <p>{selectedProduct.name}</p>
-            <p>brand: {selectedProduct.brand}</p>
-            <p>color: {selectedProduct.color}</p>
-            <p>{selectedProduct.details}</p>
-            {selectedProduct.materials.map((material) => (
-              <span>{material} </span>
-            ))}
+            <HeadlineStyled>{selectedProduct.name}</HeadlineStyled>
+            <DescriptionStyled>{selectedProduct.description}</DescriptionStyled>
+            <SectionStyled>
+              <span>brand:</span>
+              <span>{selectedProduct.brand}</span>
+              <span>color:</span>
+              <span>{selectedProduct.color}</span>
+              <span>materials:</span>
+              <ul>
+                {selectedProduct.materials.map((material) => (
+                  <li>{material} </li>
+                ))}
+              </ul>
+            </SectionStyled>
           </DetailsSection>
         )}
       </main>
@@ -96,12 +103,50 @@ const CenteredContainer = styled.div`
 const DetailsSection = styled.section`
   position: absolute;
   top: 150px;
-  left: 100px;
-  background: #e9ebea;
-  height: 200px;
-  width: 200px;
+  left: 50px;
+  background: #ecebea;
+  width: 280px;
+  padding-left: 12px;
+  padding-bottom: 12px;
+  border-radius: 8px;
 `
 const CloseIcon = styled(IoIosCloseCircleOutline)`
   position: absolute;
-  left: 170px;
+  left: 250px;
+  height: 28px;
+  width: 28px;
+`
+
+const HeadlineStyled = styled.h4`
+  margin-top: 8px;
+  text-align: center;
+`
+
+const DescriptionStyled = styled.p`
+  margin-top: 8px;
+  font-weight: 200;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 18px;
+`
+const SectionStyled = styled.section`
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  span {
+    margin-top: 8px;
+    font-weight: 200;
+    font-size: 14px;
+    margin-right: 16px;
+  }
+  ul {
+    font-weight: 200;
+    font-size: 14px;
+    margin-top: 8px;
+    list-style: none;
+  }
+  li {
+    margin-bottom: 4px;
+  }
 `

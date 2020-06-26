@@ -40,14 +40,14 @@ const Card = styled.section`
   flex-direction: column;
   align-items: center;
   background: #fff;
-  height: 375px;
+  height: 390px;
   width: 250px;
   border-radius: 25px;
   margin-top: 12px;
   box-shadow: 2px 2px 2px lightgrey, -2px 0 2px lightgrey;
 
   img {
-    height: 55%;
+    height: 54%;
     width: 100%;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
@@ -71,16 +71,16 @@ const FormStyled = styled.form`
 
 const SizeSelection = styled.select`
   width: 125px;
-  height: 24px;
+  height: 28px;
   margin-top: 16px;
-  border-radius: 4px;
-  border: 1px solid #4e5c5b;
+  border-radius: 8px;
+  border: 1px solid #6b6056;
   padding-bottom: 2px;
-  background: #d3d6d6;
+  background: #dad7d5;
 `
 
 const ButtonStyled = styled.button`
-  background: #4e5c5b;
+  background: #6b6056;
   color: white;
   border: none;
   padding: 12px;
