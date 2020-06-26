@@ -18,11 +18,23 @@ const productScheme = {
   name: {
     type: String,
   },
+  brand: {
+    type: String,
+  },
+  color: {
+    type: String,
+  },
   description: {
     type: String,
   },
+  materials: {
+    type: Object,
+  },
   price: {
     type: Number,
+  },
+  materials: {
+    type: Object,
   },
   categoryId: {
     type: Number,
@@ -36,13 +48,16 @@ const shoppingCartScheme = {
   amount: {
     type: Number,
   },
+  size: {
+    type: String,
+  },
   product: productScheme,
 };
 
 export const products = mongoose.model("products", productScheme);
 
-export const shoppingcart = mongoose.model("shoppingcart", shoppingCartScheme); 
-  
+export const shoppingcart = mongoose.model("shoppingcart", shoppingCartScheme);
+
 export const orders = mongoose.model("orders", {
   customerAdress: {
     type: String,

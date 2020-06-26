@@ -1,9 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import Home from "./images/home.png";
-import Products from "./images/shirt.png";
-import Shoppingcart from "./images/shopping-cart.png";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
+import Home from './images/home.png'
+import Products from './images/shirt.png'
+import Shoppingcart from './images/shopping-cart.png'
 
 export default function Footer({ setCategorySelected }) {
   return (
@@ -18,23 +18,24 @@ export default function Footer({ setCategorySelected }) {
         <img src={Shoppingcart} alt="shoppingcard Button" />
       </LinkStyled>
     </FooterStyled>
-  );
+  )
   function showAll() {
-    setCategorySelected("");
+    setCategorySelected('')
   }
 }
 const FooterStyled = styled.footer`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  background: white;
-`;
+  background: #ecebea;
+`
 const LinkStyled = styled(NavLink)`
   padding: 10px;
   &.selected {
-    background: #dde8eb;
+    background: #a39c95;
+    border-radius: 8px;
   }
   img {
     height: 25px;
   }
-`;
+`

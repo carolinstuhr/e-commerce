@@ -1,0 +1,8 @@
+[
+  { "name": "hoodies", "description": "female", "id": 1 },
+  { "name": "hoodies", "description": "male", "id": 2 },
+  { "name": "shirts", "description": "female", "id": 3 },
+  { "name": "shirts", "description": "male", "id": 4 },
+  { "name": "jeans", "description": "female", "id": 5 },
+  { "name": "jeans", "description": "male", "id": 6 }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "name": "American Vintage Hoodie",
+    "brand": "American Vintage",
+    "color": "beige",
+    "description": "oversized-fit with text",
+    "materials": ["100% cotton"],
+    "price": 50,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 1,
+    "image": "./images/hoodie_women_americanvintage_beige.jpg"
+  },
+  {
+    "name": "Adidas Hoodie",
+    "brand": "Adidas",
+    "color": "beige",
+    "description": "cropped and oversized fit",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 40,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 1,
+    "image": "./images/hoodie_women_adidas_beige.jpg"
+  },
+  {
+    "name": "Nike Hoodie",
+    "brand": "Nike",
+    "color": "black",
+    "description": "relaxed-fit",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 50,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 2,
+    "image": "./images/hoodie_men_nike_black.jpg"
+  },
+  {
+    "name": "American Vintage Hoodie",
+    "brand": "American Vintage",
+    "color": "beige",
+    "description": "oversized-fit",
+    "materials": ["100% cotton"],
+    "price": 70,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 2,
+    "image": "./images/hoodie_men_americanvintage_beige.jpg"
+  },
+  {
+    "name": "Shirt With Print",
+    "brand": "American Vintage",
+    "color": "white",
+    "description": "sleeveless shirt with print",
+    "materials": ["100% cotton"],
+    "price": 60,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 3,
+    "image": "./images/shirt_women_americanvintage_white.jpg"
+  },
+  {
+    "name": "Tank Top",
+    "brand": "Lululemon",
+    "color": "white",
+    "description": "loose-fitting exercise tank top",
+    "materials": ["60% cotton", "40% polyester"],
+    "price": 40,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 3,
+    "image": "./images/shirt_women_lululemon_white.jpg"
+  },
+  {
+    "name": "Button-Up Shirt",
+    "brand": "Hugo Boss",
+    "color": "blue",
+    "description": "slim-fit",
+    "materials": ["100% cotton"],
+    "price": 60,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 4,
+    "image": "./images/shirt_men_hugoboss_blue.jpg"
+  },
+  {
+    "name": "Adidas T-Shirt",
+    "brand": "Adidas",
+    "color": "red",
+    "description": "oversized t-shirt",
+    "materials": ["100% polyester"],
+    "price": 40,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 4,
+    "image": "./images/shirt_men_adidas_red.jpg"
+  },
+  {
+    "name": "Nike Tank-Top",
+    "brand": "Nike",
+    "color": "black",
+    "description": "fitted workout tank-top",
+    "materials": ["100% polyester"],
+    "price": 40,
+    "size": ["xs", "s", "m", "l", "xl"],
+    "categoryId": 4,
+    "image": "./images/shirt_men_nike_black.jpg"
+  },
+  {
+    "name": "Levis Boyfriend Jeans",
+    "brand": "Levis",
+    "color": "dark-blue",
+    "description": "boyfriend-fit with patches",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 70,
+    "size": ["32", "34", "36", "38", "40", "42", "44"],
+    "categoryId": 5,
+    "image": "./images/jeans_women_levis_darkblue.jpg"
+  },
+  {
+    "name": "Levis Skinny Jeans",
+    "brand": "Levis",
+    "color": "light-blue",
+    "description": "skinny-fit and cropped jeans",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 70,
+    "size": ["32", "34", "36", "38", "40", "42", "44"],
+    "categoryId": 5,
+    "image": "./images/jeans_women_levis_blue.jpg"
+  },
+  {
+    "name": "Boyfriend Jeans",
+    "brand": "Agolde",
+    "color": "blue",
+    "description": "boyfriend-fit",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 90,
+    "size": ["32", "34", "36", "38", "40", "42", "44"],
+    "categoryId": 5,
+    "image": "./images/jeans_women_agolde_blue.jpg"
+  },
+  {
+    "name": "Washed Levis Jeans",
+    "brand": "Levis",
+    "color": "blue",
+    "description": "washed, loose fit",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 60,
+    "size": ["27", "28", "29", "30", "31", "32", "33"],
+    "categoryId": 6,
+    "image": "./images/jeans_men_levis_blue.jpg"
+  },
+  {
+    "name": "Ripped Jeans",
+    "brand": "Agolde",
+    "color": "blue",
+    "description": "loose fitting ripped",
+    "materials": ["80% cotton", "20% polyester"],
+    "price": 90,
+    "size": ["27", "28", "29", "30", "31", "32", "33"],
+    "categoryId": 6,
+    "image": "./images/jeans_men_agolde_blue.jpg"
+  }
+]
