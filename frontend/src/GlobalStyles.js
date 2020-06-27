@@ -24,7 +24,7 @@ header {
     justify-content: center; 
     align-items: center;
     background: #ECEBEA;
-    color: #000;
+    color: #7e746b;
     font-size: 22px;
     font-weight: 600;
 }

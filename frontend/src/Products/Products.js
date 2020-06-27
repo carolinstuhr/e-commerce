@@ -7,35 +7,12 @@ export default function Products({ categorySelected }) {
   const [products, setProducts] = useState([])
   const [areDetailsVisible, setAreDetailsVisible] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState()
-  const [selectedSize, setSelectedSize] = useState()
 
   useEffect(() => {
     fetch('http://localhost:8040/products')
       .then((res) => res.json())
       .then((data) => setProducts(data))
   }, [])
-
-  function addToCart(productId, size) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
-
-    const urlencoded = new URLSearchParams()
-    urlencoded.append('amount', 1)
-    urlencoded.append('size', size)
-    urlencoded.append('productId', productId)
-
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: urlencoded,
-      redirect: 'follow',
-    }
-
-    fetch('http://localhost:8040/shoppingcart/', requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log('error', error))
-  }
 
   return (
     <>
@@ -45,22 +22,10 @@ export default function Products({ categorySelected }) {
           <CenteredContainer areDetailsVisible={areDetailsVisible}>
             <>
               {categorySelected === product.categoryId && (
-                <ProductsList
-                  product={product}
-                  showDetails={showDetails}
-                  addToCart={addToCart}
-                  setSelectedSize={setSelectedSize}
-                  selectedSize={selectedSize}
-                />
+                <ProductsList product={product} showDetails={showDetails} />
               )}
               {categorySelected === '' && (
-                <ProductsList
-                  product={product}
-                  showDetails={showDetails}
-                  addToCart={addToCart}
-                  setSelectedSize={setSelectedSize}
-                  selectedSize={selectedSize}
-                />
+                <ProductsList product={product} showDetails={showDetails} />
               )}
             </>
           </CenteredContainer>
@@ -87,6 +52,7 @@ export default function Products({ categorySelected }) {
       </main>
     </>
   )
+
   function showDetails(id) {
     setSelectedProduct(products.find((item) => item._id === id))
     setAreDetailsVisible(true)
