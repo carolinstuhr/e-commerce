@@ -150,13 +150,14 @@ const DeleteIcon = styled(AiOutlineDelete)`
   height: 20px;
   width: 20px;
   margin-right: 4px;
-  margin-top: 2px;
+  margin-top: 4px;
 `
 
 const TotalAmountSection = styled.section`
   grid-column: 4 / 5;
   grid-row: 2 / 3;
-  justify-self: center;
+  justify-self: end;
+  margin-right: 4px;
   align-self: center;
 `
 
