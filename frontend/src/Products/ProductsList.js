@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 
-export default function ProductsList({ product, showDetails }) {
+export default function ProductsList({
+  product,
+  showDetails,
+  setIsRedirectOptionVisible,
+}) {
   const [selectedSize, setSelectedSize] = useState({})
 
   return (
@@ -18,22 +22,19 @@ export default function ProductsList({ product, showDetails }) {
             setSelectedSize({ product: product._id, size: event.target.value })
           }
         >
-          {console.log(selectedSize)}
           <option>Select Size...</option>
           {product.size.map((size) => (
             <option value={size}>{size}</option>
           ))}
         </SizeSelection>
       </FormStyled>
-      <LinkStyled to="/shoppingcart">
-        <ButtonStyled
-          onClick={() =>
-            addToCart(product._id, selectedSize.product, selectedSize.size)
-          }
-        >
-          Add to Cart
-        </ButtonStyled>
-      </LinkStyled>
+      <ButtonStyled
+        onClick={() =>
+          addToCart(product._id, selectedSize.product, selectedSize.size)
+        }
+      >
+        Add to Cart
+      </ButtonStyled>
     </Card>
   )
 
@@ -57,6 +58,7 @@ export default function ProductsList({ product, showDetails }) {
       fetch('http://localhost:8040/shoppingcart/', requestOptions)
         .then((response) => response.text())
         .then((result) => console.log(result))
+        .then(() => setIsRedirectOptionVisible(true))
         .catch((error) => console.log('error', error))
     } else {
       alert('Please select a size')

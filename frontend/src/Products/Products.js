@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 import ProductsList from './ProductsList'
+import { Link } from 'react-router-dom'
+import { BsCheck } from 'react-icons/bs'
 
-export default function Products({ categorySelected }) {
+export default function Products({
+  categorySelected,
+  isRedirectOptionVisible,
+  setIsRedirectOptionVisible,
+}) {
   const [products, setProducts] = useState([])
   const [areDetailsVisible, setAreDetailsVisible] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState()
@@ -19,13 +25,24 @@ export default function Products({ categorySelected }) {
       <header>Products</header>
       <main>
         {products.map((product) => (
-          <CenteredContainer areDetailsVisible={areDetailsVisible}>
+          <CenteredContainer
+            areDetailsVisible={areDetailsVisible}
+            isRedirectOptionVisible={isRedirectOptionVisible}
+          >
             <>
               {categorySelected === product.categoryId && (
-                <ProductsList product={product} showDetails={showDetails} />
+                <ProductsList
+                  product={product}
+                  showDetails={showDetails}
+                  setIsRedirectOptionVisible={setIsRedirectOptionVisible}
+                />
               )}
               {categorySelected === '' && (
-                <ProductsList product={product} showDetails={showDetails} />
+                <ProductsList
+                  product={product}
+                  showDetails={showDetails}
+                  setIsRedirectOptionVisible={setIsRedirectOptionVisible}
+                />
               )}
             </>
           </CenteredContainer>
@@ -35,7 +52,7 @@ export default function Products({ categorySelected }) {
             <CloseIcon onClick={() => setAreDetailsVisible(false)} />
             <HeadlineStyled>{selectedProduct.name}</HeadlineStyled>
             <DescriptionStyled>{selectedProduct.description}</DescriptionStyled>
-            <SectionStyled>
+            <InnerSectionStyled>
               <span>brand:</span>
               <span>{selectedProduct.brand}</span>
               <span>color:</span>
@@ -46,8 +63,22 @@ export default function Products({ categorySelected }) {
                   <li>{material} </li>
                 ))}
               </ul>
-            </SectionStyled>
+            </InnerSectionStyled>
           </DetailsSection>
+        )}
+        {isRedirectOptionVisible && (
+          <RedirectSection>
+            <p>Item added to your cart.</p>
+            <div>
+              <CheckIcon />
+            </div>
+            <div>
+              <LinkStyled to="/shoppingcart">
+                <ButtonStyled>See Cart</ButtonStyled>
+              </LinkStyled>
+              <ButtonStyled>Keep Browsing</ButtonStyled>
+            </div>
+          </RedirectSection>
         )}
       </main>
     </>
@@ -63,19 +94,23 @@ const CenteredContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: ${(props) => (props.areDetailsVisible ? 0.3 : 1)};
+  opacity: ${(props) =>
+    props.areDetailsVisible || props.isRedirectOptionVisible ? 0.3 : 1};
 `
 
-const DetailsSection = styled.section`
+const SectionStyled = styled.section`
   position: absolute;
   top: 150px;
   left: 50px;
-  background: #ecebea;
+  background: #f8f6f4;
   width: 280px;
   padding-left: 12px;
   padding-bottom: 12px;
   border-radius: 8px;
 `
+
+const DetailsSection = styled(SectionStyled)``
+
 const CloseIcon = styled(IoIosCloseCircleOutline)`
   position: absolute;
   left: 250px;
@@ -96,7 +131,7 @@ const DescriptionStyled = styled.p`
   text-align: center;
   margin-bottom: 18px;
 `
-const SectionStyled = styled.section`
+const InnerSectionStyled = styled.section`
   display: grid;
   grid-template-columns: auto 1fr;
 
@@ -115,4 +150,37 @@ const SectionStyled = styled.section`
   li {
     margin-bottom: 4px;
   }
+`
+const RedirectSection = styled(SectionStyled)`
+  padding: 12px;
+  p,
+  div {
+    text-align: center;
+  }
+`
+
+const CheckIcon = styled(BsCheck)`
+  height: 30px;
+  width: 30px;
+  padding: 4px;
+  margin-top: 4px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid black;
+`
+
+const ButtonStyled = styled.button`
+  background: #cbc5bd;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-top: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-right: 4px;
+`
+
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: white;
 `

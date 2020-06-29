@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalStyles from './GlobalStyles'
 import Home from './Home'
 import Footer from './Footer'
@@ -8,6 +8,16 @@ import ShoppingCart from './ShoppingCart'
 
 export default function App() {
   const [categorySelected, setCategorySelected] = useState('')
+  const [shoppingCart, setShoppingCart] = useState([])
+  const [wasAmountUpated, setWasAmountUpdated] = useState(false)
+  const [isRedirectOptionVisible, setIsRedirectOptionVisible] = useState(false)
+
+  useEffect(() => {
+    fetch('http://localhost:8040/shoppingcart')
+      .then((res) => res.json())
+      .then((data) => setShoppingCart(data))
+      .then(() => console.log('done'))
+  }, [wasAmountUpated, isRedirectOptionVisible])
 
   return (
     <>
@@ -17,13 +27,23 @@ export default function App() {
           <Home clickCategory={setCategory} />
         </Route>
         <Route path="/products">
-          <Products categorySelected={categorySelected} />
+          <Products
+            categorySelected={categorySelected}
+            isRedirectOptionVisible={isRedirectOptionVisible}
+            setIsRedirectOptionVisible={setIsRedirectOptionVisible}
+          />
         </Route>
         <Route path="/shoppingcart">
-          <ShoppingCart />
+          <ShoppingCart
+            shoppingCart={shoppingCart}
+            setWasAmountUpdated={setWasAmountUpdated}
+          />
         </Route>
       </Switch>
-      <Footer setCategorySelected={setCategorySelected} />
+      <Footer
+        setCategorySelected={setCategorySelected}
+        shoppingCart={shoppingCart}
+      />
     </>
   )
 

@@ -4,17 +4,7 @@ import { AiOutlineMinus } from 'react-icons/ai'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-export default function ShoppingCart() {
-  const [shoppingCart, setShoppingCart] = useState([])
-  const [wasAmountUpated, setWasAmountUpdated] = useState(false)
-
-  useEffect(() => {
-    fetch('http://localhost:8040/shoppingcart')
-      .then((res) => res.json())
-      .then((data) => setShoppingCart(data))
-      .then(() => console.log('done'))
-  }, [wasAmountUpated])
-
+export default function ShoppingCart({ shoppingCart, setWasAmountUpdated }) {
   return (
     <>
       <header>Shopping Cart</header>

@@ -5,7 +5,7 @@ import Home from './images/home.png'
 import Products from './images/shirt.png'
 import Shoppingcart from './images/shopping-cart.png'
 
-export default function Footer({ setCategorySelected }) {
+export default function Footer({ setCategorySelected, shoppingCart }) {
   return (
     <FooterStyled>
       <LinkStyled exact to="/" activeClassName="selected">
@@ -15,6 +15,7 @@ export default function Footer({ setCategorySelected }) {
         <img src={Products} alt="product Button" />
       </LinkStyled>
       <LinkStyled to="/shoppingcart" activeClassName="selected">
+        <p>{shoppingCart.length}</p>
         <img src={Shoppingcart} alt="shoppingcard Button" />
       </LinkStyled>
     </FooterStyled>
@@ -37,5 +38,16 @@ const LinkStyled = styled(NavLink)`
   }
   img {
     height: 25px;
+  }
+  p {
+    position: absolute;
+    padding-left: 8px;
+    right: 50px;
+    bottom: 30px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: red;
   }
 `
