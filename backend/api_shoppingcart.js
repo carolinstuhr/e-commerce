@@ -35,7 +35,7 @@ router.patch("/", (request, response) => {
 
 router.delete("/", (request, response) => {
   shoppingcart
-    .findByIdAndDelete(request.body.productId)
+    .findByIdAndDelete(request.body.cartId)
     .then(() => response.json({ deleted: true }));
 });
 

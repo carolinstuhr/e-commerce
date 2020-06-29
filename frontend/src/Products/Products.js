@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 import ProductsList from './ProductsList'
+import { Link } from 'react-router-dom'
+import { BsCheck } from 'react-icons/bs'
 
-export default function Products({ categorySelected }) {
+export default function Products({
+  categorySelected,
+  isRedirectOptionVisible,
+  setIsRedirectOptionVisible,
+}) {
   const [products, setProducts] = useState([])
   const [areDetailsVisible, setAreDetailsVisible] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState()
-  const [selectedSize, setSelectedSize] = useState()
 
   useEffect(() => {
     fetch('http://localhost:8040/products')
@@ -15,51 +20,28 @@ export default function Products({ categorySelected }) {
       .then((data) => setProducts(data))
   }, [])
 
-  function addToCart(productId, size) {
-    const myHeaders = new Headers()
-    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
-
-    const urlencoded = new URLSearchParams()
-    urlencoded.append('amount', 1)
-    urlencoded.append('size', size)
-    urlencoded.append('productId', productId)
-
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: urlencoded,
-      redirect: 'follow',
-    }
-
-    fetch('http://localhost:8040/shoppingcart/', requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log('error', error))
-  }
-
   return (
     <>
       <header>Products</header>
       <main>
         {products.map((product) => (
-          <CenteredContainer areDetailsVisible={areDetailsVisible}>
+          <CenteredContainer
+            areDetailsVisible={areDetailsVisible}
+            isRedirectOptionVisible={isRedirectOptionVisible}
+          >
             <>
               {categorySelected === product.categoryId && (
                 <ProductsList
                   product={product}
                   showDetails={showDetails}
-                  addToCart={addToCart}
-                  setSelectedSize={setSelectedSize}
-                  selectedSize={selectedSize}
+                  setIsRedirectOptionVisible={setIsRedirectOptionVisible}
                 />
               )}
               {categorySelected === '' && (
                 <ProductsList
                   product={product}
                   showDetails={showDetails}
-                  addToCart={addToCart}
-                  setSelectedSize={setSelectedSize}
-                  selectedSize={selectedSize}
+                  setIsRedirectOptionVisible={setIsRedirectOptionVisible}
                 />
               )}
             </>
@@ -70,7 +52,7 @@ export default function Products({ categorySelected }) {
             <CloseIcon onClick={() => setAreDetailsVisible(false)} />
             <HeadlineStyled>{selectedProduct.name}</HeadlineStyled>
             <DescriptionStyled>{selectedProduct.description}</DescriptionStyled>
-            <SectionStyled>
+            <InnerSectionStyled>
               <span>brand:</span>
               <span>{selectedProduct.brand}</span>
               <span>color:</span>
@@ -81,12 +63,31 @@ export default function Products({ categorySelected }) {
                   <li>{material} </li>
                 ))}
               </ul>
-            </SectionStyled>
+            </InnerSectionStyled>
           </DetailsSection>
+        )}
+        {isRedirectOptionVisible && (
+          <RedirectSection>
+            <p>Item added to your cart.</p>
+            <div>
+              <CheckIcon />
+            </div>
+            <div>
+              <LinkStyled to="/shoppingcart">
+                <ButtonStyled onClick={() => setIsRedirectOptionVisible(false)}>
+                  See Cart
+                </ButtonStyled>
+              </LinkStyled>
+              <ButtonStyled onClick={() => setIsRedirectOptionVisible(false)}>
+                Keep Browsing
+              </ButtonStyled>
+            </div>
+          </RedirectSection>
         )}
       </main>
     </>
   )
+
   function showDetails(id) {
     setSelectedProduct(products.find((item) => item._id === id))
     setAreDetailsVisible(true)
@@ -97,19 +98,24 @@ const CenteredContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: ${(props) => (props.areDetailsVisible ? 0.3 : 1)};
+  opacity: ${(props) =>
+    props.areDetailsVisible || props.isRedirectOptionVisible ? 0.2 : 1};
 `
 
-const DetailsSection = styled.section`
+const SectionStyled = styled.section`
   position: absolute;
-  top: 150px;
   left: 50px;
-  background: #ecebea;
+  background: #f8f6f4;
   width: 280px;
   padding-left: 12px;
   padding-bottom: 12px;
   border-radius: 8px;
 `
+
+const DetailsSection = styled(SectionStyled)`
+  top: 150px;
+`
+
 const CloseIcon = styled(IoIosCloseCircleOutline)`
   position: absolute;
   left: 250px;
@@ -130,7 +136,7 @@ const DescriptionStyled = styled.p`
   text-align: center;
   margin-bottom: 18px;
 `
-const SectionStyled = styled.section`
+const InnerSectionStyled = styled.section`
   display: grid;
   grid-template-columns: auto 1fr;
 
@@ -149,4 +155,38 @@ const SectionStyled = styled.section`
   li {
     margin-bottom: 4px;
   }
+`
+const RedirectSection = styled(SectionStyled)`
+  padding: 12px;
+  top: 200px;
+  p,
+  div {
+    text-align: center;
+  }
+`
+
+const CheckIcon = styled(BsCheck)`
+  height: 25px;
+  width: 25px;
+  padding: 2px;
+  margin-top: 12px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid black;
+`
+
+const ButtonStyled = styled.button`
+  background: #adacab;
+  color: white;
+  border: none;
+  padding: 8px;
+  width: 100px;
+  margin-top: 12px;
+  font-size: 12px;
+  margin-right: 8px;
+`
+
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: white;
 `

@@ -23,8 +23,8 @@ header {
     display: flex; 
     justify-content: center; 
     align-items: center;
-    background: #ECEBEA;
-    color: #000;
+    background: #ecebea;
+    color: #7e746b;
     font-size: 22px;
     font-weight: 600;
 }

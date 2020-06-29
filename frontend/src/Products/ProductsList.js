@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 
 export default function ProductsList({
   product,
   showDetails,
-  addToCart,
-  setSelectedSize,
-  selectedSize,
+  setIsRedirectOptionVisible,
 }) {
+  const [selectedSize, setSelectedSize] = useState({})
+
   return (
     <Card>
       <img src={product.image} alt="" />
       <h3>{product.name}</h3>
       <p>{product.price} €</p>
-      <p onClick={() => showDetails(product._id)}>See Details</p>
+      <DetailsParagraph onClick={() => showDetails(product._id)}>
+        See Details
+      </DetailsParagraph>
       <FormStyled>
         <SizeSelection
           id="size"
-          onChange={(event) => setSelectedSize(event.target.value)}
+          onChange={(event) =>
+            setSelectedSize({ product: product._id, size: event.target.value })
+          }
         >
           <option>Select Size...</option>
           {product.size.map((size) => (
@@ -26,13 +30,42 @@ export default function ProductsList({
           ))}
         </SizeSelection>
       </FormStyled>
-      <LinkStyled to="/shoppingcart">
-        <ButtonStyled onClick={() => addToCart(product._id, selectedSize)}>
-          Add to Cart
-        </ButtonStyled>
-      </LinkStyled>
+      <ButtonStyled
+        onClick={() =>
+          addToCart(product._id, selectedSize.product, selectedSize.size)
+        }
+      >
+        Add to Cart
+      </ButtonStyled>
     </Card>
   )
+
+  function addToCart(productId, productSize, size) {
+    if (productSize === productId) {
+      const myHeaders = new Headers()
+      myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+      const urlencoded = new URLSearchParams()
+      urlencoded.append('amount', 1)
+      urlencoded.append('size', size)
+      urlencoded.append('productId', productId)
+
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow',
+      }
+
+      fetch('http://localhost:8040/shoppingcart/', requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .then(() => setIsRedirectOptionVisible(true))
+        .catch((error) => console.log('error', error))
+    } else {
+      alert('Please select a size')
+    }
+  }
 }
 
 const Card = styled.section`
@@ -64,6 +97,10 @@ const Card = styled.section`
     font-size: 14px;
   }
 `
+const DetailsParagraph = styled.p`
+  text-decoration: underline;
+`
+
 const FormStyled = styled.form`
   font-weight: 200;
   font-size: 14px;
@@ -89,9 +126,4 @@ const ButtonStyled = styled.button`
   border-radius: 10px;
   font-size: 0.75em;
   font-weight: bold;
-`
-
-const LinkStyled = styled(Link)`
-  text-decoration: none;
-  color: white;
 `
