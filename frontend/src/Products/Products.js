@@ -74,9 +74,13 @@ export default function Products({
             </div>
             <div>
               <LinkStyled to="/shoppingcart">
-                <ButtonStyled>See Cart</ButtonStyled>
+                <ButtonStyled onClick={() => setIsRedirectOptionVisible(false)}>
+                  See Cart
+                </ButtonStyled>
               </LinkStyled>
-              <ButtonStyled>Keep Browsing</ButtonStyled>
+              <ButtonStyled onClick={() => setIsRedirectOptionVisible(false)}>
+                Keep Browsing
+              </ButtonStyled>
             </div>
           </RedirectSection>
         )}
@@ -95,12 +99,11 @@ const CenteredContainer = styled.div`
   flex-direction: column;
   align-items: center;
   opacity: ${(props) =>
-    props.areDetailsVisible || props.isRedirectOptionVisible ? 0.3 : 1};
+    props.areDetailsVisible || props.isRedirectOptionVisible ? 0.2 : 1};
 `
 
 const SectionStyled = styled.section`
   position: absolute;
-  top: 150px;
   left: 50px;
   background: #f8f6f4;
   width: 280px;
@@ -109,7 +112,9 @@ const SectionStyled = styled.section`
   border-radius: 8px;
 `
 
-const DetailsSection = styled(SectionStyled)``
+const DetailsSection = styled(SectionStyled)`
+  top: 150px;
+`
 
 const CloseIcon = styled(IoIosCloseCircleOutline)`
   position: absolute;
@@ -153,6 +158,7 @@ const InnerSectionStyled = styled.section`
 `
 const RedirectSection = styled(SectionStyled)`
   padding: 12px;
+  top: 200px;
   p,
   div {
     text-align: center;
@@ -160,24 +166,24 @@ const RedirectSection = styled(SectionStyled)`
 `
 
 const CheckIcon = styled(BsCheck)`
-  height: 30px;
-  width: 30px;
-  padding: 4px;
-  margin-top: 4px;
+  height: 25px;
+  width: 25px;
+  padding: 2px;
+  margin-top: 12px;
   text-align: center;
   border-radius: 50%;
   border: 1px solid black;
 `
 
 const ButtonStyled = styled.button`
-  background: #cbc5bd;
+  background: #adacab;
   color: white;
   border: none;
   padding: 8px;
+  width: 100px;
   margin-top: 12px;
-  border-radius: 10px;
   font-size: 12px;
-  margin-right: 4px;
+  margin-right: 8px;
 `
 
 const LinkStyled = styled(Link)`

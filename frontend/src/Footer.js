@@ -41,13 +41,14 @@ const LinkStyled = styled(NavLink)`
   }
   p {
     position: absolute;
-    padding-left: 8px;
+    padding-left: 7px;
     right: 50px;
     bottom: 30px;
     height: 25px;
     width: 25px;
     border-radius: 50%;
-    border: 1px solid black;
-    background: red;
+    color: white;
+    border: 1px solid #bd0606;
+    background: #bd0606;
   }
 `
