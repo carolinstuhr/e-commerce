@@ -14,7 +14,9 @@ export default function ProductsList({
       <img src={product.image} alt="" />
       <h3>{product.name}</h3>
       <p>{product.price} €</p>
-      <p onClick={() => showDetails(product._id)}>See Details</p>
+      <DetailsParagraph onClick={() => showDetails(product._id)}>
+        See Details
+      </DetailsParagraph>
       <FormStyled>
         <SizeSelection
           id="size"
@@ -95,6 +97,10 @@ const Card = styled.section`
     font-size: 14px;
   }
 `
+const DetailsParagraph = styled.p`
+  text-decoration: underline;
+`
+
 const FormStyled = styled.form`
   font-weight: 200;
   font-size: 14px;
@@ -120,9 +126,4 @@ const ButtonStyled = styled.button`
   border-radius: 10px;
   font-size: 0.75em;
   font-weight: bold;
-`
-
-const LinkStyled = styled(Link)`
-  text-decoration: none;
-  color: white;
 `

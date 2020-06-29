@@ -10,7 +10,7 @@ export default function App() {
   const [categorySelected, setCategorySelected] = useState('')
   const [shoppingCart, setShoppingCart] = useState([])
   const [wasAmountUpated, setWasAmountUpdated] = useState(false)
-  const [isRedirectOptionVisible, setIsRedirectOptionVisible] = useState(true)
+  const [isRedirectOptionVisible, setIsRedirectOptionVisible] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:8040/shoppingcart')

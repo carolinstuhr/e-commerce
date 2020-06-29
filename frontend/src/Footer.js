@@ -15,7 +15,7 @@ export default function Footer({ setCategorySelected, shoppingCart }) {
         <img src={Products} alt="product Button" />
       </LinkStyled>
       <LinkStyled to="/shoppingcart" activeClassName="selected">
-        <p>{shoppingCart.length}</p>
+        {shoppingCart.length > 0 && <p>{shoppingCart.length}</p>}
         <img src={Shoppingcart} alt="shoppingcard Button" />
       </LinkStyled>
     </FooterStyled>

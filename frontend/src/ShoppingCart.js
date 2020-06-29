@@ -13,7 +13,7 @@ export default function ShoppingCart({ shoppingCart, setWasAmountUpdated }) {
           <SectionStyled key={cart._id}>
             <img src={cart.product.image} alt="" />
             <h4>{cart.product.name}</h4>
-            <p>size: {cart.size}</p>
+            <ParagraphStyled>Size: {cart.size.toUpperCase()}</ParagraphStyled>
             <ChangeAmountSection>
               <MinusIcon
                 onClick={() => updateAmount(cart.amount - 1, cart._id)}
@@ -24,9 +24,9 @@ export default function ShoppingCart({ shoppingCart, setWasAmountUpdated }) {
               />
             </ChangeAmountSection>
             <DeleteIcon onClick={() => deleteItem(cart._id)} />
-            <TotalAmountSection>
-              <p>{cart.product.price * cart.amount} €</p>
-            </TotalAmountSection>
+            <AmountParagraphStyled>
+              {cart.product.price * cart.amount} €
+            </AmountParagraphStyled>
           </SectionStyled>
         ))}
         <TotalPriceParagraph>
@@ -85,46 +85,43 @@ const MainStyled = styled.main`
 
 const SectionStyled = styled.section`
   display: grid;
-  grid-template-columns: 90px auto auto 70px;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 120px auto auto 70px;
+  grid-template-rows: auto 1fr 1fr;
   color: #7e746b;
   box-shadow: 2px 2px 2px #908880, -2px 0 2px #908880;
-  border-radius: 8px;
-  height: 90px;
-  margin-bottom: 12px;
+  height: 120px;
+  margin-bottom: 16px;
 
   img {
-    height: 90px;
-    width: 90px;
+    height: 120px;
+    width: 120px;
     object-fit: cover;
-    border-radius: 8px;
     grid-column: 1 / 2;
-    grid-row: 1/ 3;
+    grid-row: 1/ 4;
   }
   h4 {
     grid-column: 2 / 4;
-    margin-left: 8px;
+    margin-left: 16px;
     margin-top: 4px;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 16px;
   }
-  p {
-    grid-column: 2 / 3;
-    margin-left: 8px;
-    font-weight: 200;
-    font-size: 14px;
-    align-self: center;
-  }
+`
+const ParagraphStyled = styled.p`
+  grid-column: 2 / 3;
+  margin-left: 16px;
+  font-weight: 200;
+  font-size: 14px;
+  align-self: center;
 `
 
 const ChangeAmountSection = styled.section`
   display: flex;
-  grid-row: 2 / 3;
-  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
   align-self: center;
-  margin-left: 8px;
+  margin-left: 16px;
   border: 1px solid #908880;
-  border-radius: 4px;
   width: 52px;
   padding: 2px 4px;
 
@@ -153,12 +150,13 @@ const DeleteIcon = styled(AiOutlineDelete)`
   margin-top: 4px;
 `
 
-const TotalAmountSection = styled.section`
+const AmountParagraphStyled = styled.p`
   grid-column: 4 / 5;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
   justify-self: end;
   margin-right: 4px;
   align-self: center;
+  font-weight: 200;
 `
 
 const TotalPriceParagraph = styled.p`
@@ -167,4 +165,5 @@ const TotalPriceParagraph = styled.p`
   text-align: right;
   margin-top: 16px;
   padding-top: 4px;
+  margin-bottom: 18px;
 `
