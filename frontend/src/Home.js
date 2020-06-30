@@ -53,12 +53,13 @@ const CenteredContainer = styled.div`
   p {
     font-weight: 300;
     font-size: 18px;
+    color: var(--secondary);
   }
 `
 
 const ButtonStyled = styled.button`
-  background: #6b6056;
-  color: #ecebea;
+  background: var(--tertiary);
+  color: var(--primary);
   border: none;
   padding: 8px;
   width: 300px;

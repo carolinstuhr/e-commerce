@@ -87,8 +87,7 @@ const SectionStyled = styled.section`
   display: grid;
   grid-template-columns: 120px auto auto 70px;
   grid-template-rows: auto 1fr 1fr;
-  color: #7e746b;
-  box-shadow: 2px 2px 2px #908880, -2px 0 2px #908880;
+  box-shadow: 2px 2px 2px var(--tertiary), -2px 0 2px var(--tertiary);
   height: 120px;
   margin-bottom: 16px;
 
@@ -121,7 +120,7 @@ const ChangeAmountSection = styled.section`
   grid-column: 2 / 3;
   align-self: center;
   margin-left: 16px;
-  border: 1px solid #908880;
+  border: 1px solid var(--tertiary);
   width: 52px;
   padding: 2px 4px;
 
@@ -160,8 +159,7 @@ const AmountParagraphStyled = styled.p`
 `
 
 const TotalPriceParagraph = styled.p`
-  border-top: 2px double #908880;
-  color: #7e746b;
+  border-top: 2px double var(--tertiary);
   text-align: right;
   margin-top: 16px;
   padding-top: 4px;
