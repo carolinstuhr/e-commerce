@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export default function Home({ clickCategory }) {
+export default function Home({
+  setCategorySelected,
+  categorySelected,
+  setSubcategorySelected,
+}) {
   const [categories, setCategories] = useState([])
   const [selectedGender, setSelectedGender] = useState('female')
 
@@ -11,6 +15,8 @@ export default function Home({ clickCategory }) {
       .then((res) => res.json())
       .then((data) => setCategories(data))
   }, [])
+
+  console.log(categories)
   return (
     <>
       <header>Categories</header>
@@ -34,26 +40,83 @@ export default function Home({ clickCategory }) {
             categories
               .filter((category) => category.description === 'female')
               .map((category) => (
-                <LinkStyled to="/products">
-                  <ButtonStyled onClick={() => clickCategory(category.id)}>
-                    {category.name}
-                  </ButtonStyled>
-                </LinkStyled>
+                <>
+                  {category.subcategories.length === 0 ? (
+                    <LinkStyled to="/products">
+                      <ButtonStyled
+                        onClick={() => setSelectedCategories(category.id, 0)}
+                      >
+                        {category.name}
+                      </ButtonStyled>
+                    </LinkStyled>
+                  ) : (
+                    <>
+                      <ButtonStyled
+                        onClick={() => setCategorySelected(category.id)}
+                      >
+                        {category.name}
+                      </ButtonStyled>
+                      {categorySelected === category.id &&
+                        category.subcategories.map((subcategory) => (
+                          <LinkStyled to="/products">
+                            <p
+                              onClick={() =>
+                                setSubcategorySelected(subcategory.id)
+                              }
+                            >
+                              {subcategory.name}
+                            </p>
+                          </LinkStyled>
+                        ))}
+                    </>
+                  )}
+                </>
               ))}
           {selectedGender === 'male' &&
             categories
               .filter((category) => category.description === 'male')
               .map((category) => (
-                <LinkStyled to="/products">
-                  <ButtonStyled onClick={() => clickCategory(category.id)}>
-                    {category.name}
-                  </ButtonStyled>
-                </LinkStyled>
+                <>
+                  {category.subcategories.length === 0 ? (
+                    <LinkStyled to="/products">
+                      <ButtonStyled
+                        onClick={() => setSelectedCategories(category.id, 0)}
+                      >
+                        {category.name}
+                      </ButtonStyled>
+                    </LinkStyled>
+                  ) : (
+                    <>
+                      <ButtonStyled
+                        onClick={() => setCategorySelected(category.id)}
+                      >
+                        {category.name}
+                      </ButtonStyled>
+                      {categorySelected === category.id &&
+                        category.subcategories.map((subcategory) => (
+                          <LinkStyled to="/products">
+                            <p
+                              onClick={() =>
+                                setSubcategorySelected(subcategory.id)
+                              }
+                            >
+                              {subcategory.name}
+                            </p>
+                          </LinkStyled>
+                        ))}
+                    </>
+                  )}
+                </>
               ))}
         </CenteredContainer>
       </main>
     </>
   )
+
+  function setSelectedCategories(categoryId, subcategoryID) {
+    setCategorySelected(categoryId)
+    setSubcategorySelected(subcategoryID)
+  }
 }
 
 const CenteredContainer = styled.div`

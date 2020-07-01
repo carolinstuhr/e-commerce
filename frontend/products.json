@@ -8,6 +8,7 @@
     "price": 50,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 1,
+    "subcategoryId": 2,
     "image": "./images/hoodie_women_americanvintage_beige.jpg"
   },
   {
@@ -19,6 +20,7 @@
     "price": 40,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 1,
+    "subcategoryId": 2,
     "image": "./images/hoodie_women_adidas_beige.jpg"
   },
   {
@@ -30,6 +32,7 @@
     "price": 50,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 2,
+    "subcategoryId": 2,
     "image": "./images/hoodie_men_nike_black.jpg"
   },
   {
@@ -41,6 +44,7 @@
     "price": 70,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 2,
+    "subcategoryId": 2,
     "image": "./images/hoodie_men_americanvintage_beige.jpg"
   },
   {
@@ -51,7 +55,8 @@
     "materials": ["100% cotton"],
     "price": 60,
     "size": ["xs", "s", "m", "l", "xl"],
-    "categoryId": 3,
+    "categoryId": 5,
+    "subcategoryId": 2,
     "image": "./images/shirt_women_americanvintage_white.jpg"
   },
   {
@@ -63,6 +68,7 @@
     "price": 40,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 3,
+    "subcategoryId": 2,
     "image": "./images/shirt_women_lululemon_white.jpg"
   },
   {
@@ -73,7 +79,8 @@
     "materials": ["100% cotton"],
     "price": 60,
     "size": ["xs", "s", "m", "l", "xl"],
-    "categoryId": 4,
+    "categoryId": 6,
+    "subcategoryId": 1,
     "image": "./images/shirt_men_hugoboss_blue.jpg"
   },
   {
@@ -85,6 +92,7 @@
     "price": 40,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 4,
+    "subcategoryId": 2,
     "image": "./images/shirt_men_adidas_red.jpg"
   },
   {
@@ -96,6 +104,7 @@
     "price": 40,
     "size": ["xs", "s", "m", "l", "xl"],
     "categoryId": 4,
+    "subcategoryId": 2,
     "image": "./images/shirt_men_nike_black.jpg"
   },
   {
@@ -106,7 +115,8 @@
     "materials": ["80% cotton", "20% polyester"],
     "price": 70,
     "size": ["32", "34", "36", "38", "40", "42", "44"],
-    "categoryId": 5,
+    "categoryId": 7,
+    "subcategoryId": 0,
     "image": "./images/jeans_women_levis_darkblue.jpg"
   },
   {
@@ -117,7 +127,8 @@
     "materials": ["80% cotton", "20% polyester"],
     "price": 70,
     "size": ["32", "34", "36", "38", "40", "42", "44"],
-    "categoryId": 5,
+    "categoryId": 7,
+    "subcategoryId": 0,
     "image": "./images/jeans_women_levis_blue.jpg"
   },
   {
@@ -128,7 +139,8 @@
     "materials": ["80% cotton", "20% polyester"],
     "price": 90,
     "size": ["32", "34", "36", "38", "40", "42", "44"],
-    "categoryId": 5,
+    "categoryId": 7,
+    "subcategoryId": 0,
     "image": "./images/jeans_women_agolde_blue.jpg"
   },
   {
@@ -139,7 +151,8 @@
     "materials": ["80% cotton", "20% polyester"],
     "price": 60,
     "size": ["27", "28", "29", "30", "31", "32", "33"],
-    "categoryId": 6,
+    "categoryId": 8,
+    "subcategoryId": 0,
     "image": "./images/jeans_men_levis_blue.jpg"
   },
   {
@@ -150,7 +163,8 @@
     "materials": ["80% cotton", "20% polyester"],
     "price": 90,
     "size": ["27", "28", "29", "30", "31", "32", "33"],
-    "categoryId": 6,
+    "categoryId": 8,
+    "subcategoryId": 0,
     "image": "./images/jeans_men_agolde_blue.jpg"
   }
 ]

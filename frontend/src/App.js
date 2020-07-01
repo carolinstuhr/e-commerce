@@ -8,6 +8,7 @@ import ShoppingCart from './ShoppingCart'
 
 export default function App() {
   const [categorySelected, setCategorySelected] = useState('')
+  const [subcategorySelected, setSubcategorySelected] = useState('')
   const [shoppingCart, setShoppingCart] = useState([])
   const [wasAmountUpated, setWasAmountUpdated] = useState(false)
   const [isRedirectOptionVisible, setIsRedirectOptionVisible] = useState(false)
@@ -24,11 +25,16 @@ export default function App() {
       <GlobalStyles />
       <Switch>
         <Route exact path="/">
-          <Home clickCategory={setCategory} />
+          <Home
+            setCategorySelected={setCategorySelected}
+            categorySelected={categorySelected}
+            setSubcategorySelected={setSubcategorySelected}
+          />
         </Route>
         <Route path="/products">
           <Products
             categorySelected={categorySelected}
+            subcategorySelected={subcategorySelected}
             isRedirectOptionVisible={isRedirectOptionVisible}
             setIsRedirectOptionVisible={setIsRedirectOptionVisible}
           />
@@ -46,8 +52,4 @@ export default function App() {
       />
     </>
   )
-
-  function setCategory(categoryId) {
-    setCategorySelected(categoryId)
-  }
 }
