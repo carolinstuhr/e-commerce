@@ -30,8 +30,9 @@ header {
     justify-content: center; 
     align-items: center;
     background: var(--quarternary);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
+    font-family: 'Inconsolata', monospace;
 }
 
 `

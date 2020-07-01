@@ -1,8 +1,24 @@
 [
-  { "name": "hoodies", "description": "female", "id": 1 },
-  { "name": "hoodies", "description": "male", "id": 2 },
-  { "name": "shirts", "description": "female", "id": 3 },
+  { "name": "sweatshirts & hoodies", "description": "female", "id": 1 },
+  { "name": "sweatshirts & hoodies", "description": "male", "id": 2 },
+  { "name": "t-shirts", "description": "female", "id": 3 },
+  { "name": "t-shirts", "description": "male", "id": 4 },
+  { "name": "tops", "description": "female", "id": 3 },
   { "name": "shirts", "description": "male", "id": 4 },
   { "name": "jeans", "description": "female", "id": 5 },
-  { "name": "jeans", "description": "male", "id": 6 }
+  { "name": "jeans", "description": "male", "id": 6 },
+  { "name": "trousers", "description": "female", "id": 7 },
+  { "name": "trousers", "description": "male", "id": 8 },
+  { "name": "shorts", "description": "female", "id": 9 },
+  { "name": "shorts", "description": "male", "id": 10 },
+  { "name": "skirts", "description": "female", "id": 11 },
+  { "name": "dresses", "description": "female", "id": 12 },
+  { "name": "jumpers", "description": "female", "id": 13 },
+  { "name": "jumpers", "description": "male", "id": 14 },
+  { "name": "blazers", "description": "female", "id": 15 },
+  { "name": "blazers", "description": "male", "id": 16 },
+  { "name": "jackets", "description": "female", "id": 17 },
+  { "name": "jackets", "description": "male", "id": 18 },
+  { "name": "coats", "description": "female", "id": 19 },
+  { "name": "coats", "description": "male", "id": 20 }
 ]

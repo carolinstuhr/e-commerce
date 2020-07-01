@@ -126,6 +126,7 @@ const ChangeAmountSection = styled.section`
 
   p {
     margin: 0;
+    font-size: 14px;
   }
 `
 

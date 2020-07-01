@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 export default function Home({ clickCategory }) {
   const [categories, setCategories] = useState([])
+  const [selectedGender, setSelectedGender] = useState('female')
 
   useEffect(() => {
     fetch('http://localhost:8040/categories')
@@ -15,26 +16,40 @@ export default function Home({ clickCategory }) {
       <header>Categories</header>
       <main>
         <CenteredContainer>
-          <p>Women's</p>
-          {categories
-            .filter((category) => category.description === 'female')
-            .map((category) => (
-              <LinkStyled to="/products">
-                <ButtonStyled onClick={() => clickCategory(category.id)}>
-                  {category.name}
-                </ButtonStyled>
-              </LinkStyled>
-            ))}
-          <p>Men's</p>
-          {categories
-            .filter((category) => category.description === 'male')
-            .map((category) => (
-              <LinkStyled to="/products">
-                <ButtonStyled onClick={() => clickCategory(category.id)}>
-                  {category.name}
-                </ButtonStyled>
-              </LinkStyled>
-            ))}
+          <div>
+            <ParagraphWomen
+              selectedGender={selectedGender}
+              onClick={() => setSelectedGender('female')}
+            >
+              Women's
+            </ParagraphWomen>
+            <ParagraphMen
+              selectedGender={selectedGender}
+              onClick={() => setSelectedGender('male')}
+            >
+              Men's
+            </ParagraphMen>
+          </div>
+          {selectedGender === 'female' &&
+            categories
+              .filter((category) => category.description === 'female')
+              .map((category) => (
+                <LinkStyled to="/products">
+                  <ButtonStyled onClick={() => clickCategory(category.id)}>
+                    {category.name}
+                  </ButtonStyled>
+                </LinkStyled>
+              ))}
+          {selectedGender === 'male' &&
+            categories
+              .filter((category) => category.description === 'male')
+              .map((category) => (
+                <LinkStyled to="/products">
+                  <ButtonStyled onClick={() => clickCategory(category.id)}>
+                    {category.name}
+                  </ButtonStyled>
+                </LinkStyled>
+              ))}
         </CenteredContainer>
       </main>
     </>
@@ -42,32 +57,58 @@ export default function Home({ clickCategory }) {
 }
 
 const CenteredContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h2,
-  p {
-    text-align: center;
+  text-align: center;
+  div {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
-  }
-  p {
-    font-weight: 300;
-    font-size: 18px;
-    color: var(--secondary);
+    margin-bottom: 16px;
+    margin-left: -4px;
+    p {
+      font-weight: 400;
+      font-size: 20px;
+      width: 187px;
+      padding: 8px;
+    }
   }
 `
 
+const ParagraphWomen = styled.p`
+  background: ${(props) =>
+    props.selectedGender === 'female'
+      ? 'rgba(215, 206, 199, 1)'
+      : 'rgba(215, 206, 199, 0.3)'};
+  color: ${(props) =>
+    props.selectedGender === 'female'
+      ? 'rgba(86, 86, 86, 1)'
+      : 'rgba(86, 86, 86, 0.7)'};
+`
+
+const ParagraphMen = styled.p`
+  background: ${(props) =>
+    props.selectedGender === 'male'
+      ? 'rgba(215, 206, 199, 1)'
+      : 'rgba(215, 206, 199, 0.3)'};
+  color: ${(props) =>
+    props.selectedGender === 'male'
+      ? 'rgba(86, 86, 86, 1)'
+      : 'rgba(86, 86, 86, 0.7)'};
+`
+
 const ButtonStyled = styled.button`
+  display: block;
   background: var(--tertiary);
   color: var(--primary);
   border: none;
   padding: 8px;
-  width: 300px;
+  width: 100%;
+  margin-left: -4px;
   height: 50px;
   margin-top: 8px;
-  border-radius: 10px;
+
   font-size: 18px;
-  font-weight: 200;
+  font-weight: 300;
+  font-family: 'Inconsolata', monospace;
 `
 const LinkStyled = styled(Link)`
   text-decoration: none;
