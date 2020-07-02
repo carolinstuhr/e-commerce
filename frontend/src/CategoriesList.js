@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
@@ -8,6 +8,8 @@ export default function CategoriesList({
   setSubcategorySelected,
   categorySelected,
 }) {
+  const [isSubcategoryVisible, setIsSubcategoryVisible] = useState(false)
+
   return (
     <>
       {category.subcategories.length === 0 ? (
@@ -18,19 +20,23 @@ export default function CategoriesList({
         </LinkStyled>
       ) : (
         <>
-          <ButtonStyled onClick={() => setCategorySelected(category.id)}>
+          <ButtonStyled onClick={() => subcategoryVisible(category.id)}>
             {category.name}
           </ButtonStyled>
-          {categorySelected === category.id && (
+          {categorySelected === category.id && isSubcategoryVisible && (
             <>
               <LinkStyled to="/products">
-                <p onClick={() => setSubcategorySelected(0)}>all</p>
+                <ParagraphStyled onClick={() => setSubcategorySelected(0)}>
+                  all
+                </ParagraphStyled>
               </LinkStyled>
               {category.subcategories.map((subcategory) => (
                 <LinkStyled to="/products">
-                  <p onClick={() => setSubcategorySelected(subcategory.id)}>
+                  <ParagraphStyled
+                    onClick={() => setSubcategorySelected(subcategory.id)}
+                  >
                     {subcategory.name}
-                  </p>
+                  </ParagraphStyled>
                 </LinkStyled>
               ))}
             </>
@@ -42,6 +48,11 @@ export default function CategoriesList({
   function setSelectedCategories(categoryId, subcategoryID) {
     setCategorySelected(categoryId)
     setSubcategorySelected(subcategoryID)
+  }
+
+  function subcategoryVisible(categoryId) {
+    setCategorySelected(categoryId)
+    setIsSubcategoryVisible(!isSubcategoryVisible)
   }
 }
 
@@ -55,7 +66,6 @@ const ButtonStyled = styled.button`
   margin-left: -4px;
   height: 50px;
   margin-top: 8px;
-
   font-size: 18px;
   font-weight: 300;
   font-family: 'Inconsolata', monospace;
@@ -63,4 +73,9 @@ const ButtonStyled = styled.button`
 const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #ecebea;
+`
+const ParagraphStyled = styled.p`
+  font-size: 16px;
+  font-weight: 200;
+  margin-bottom: 8px;
 `
