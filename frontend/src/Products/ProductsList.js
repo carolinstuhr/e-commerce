@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
 
 export default function ProductsList({
   product,
@@ -25,8 +24,10 @@ export default function ProductsList({
           }
         >
           <option>Select Size...</option>
-          {product.size.map((size) => (
-            <option value={size}>{size}</option>
+          {product.size.map((size, index) => (
+            <option value={size} key={index}>
+              {size}
+            </option>
           ))}
         </SizeSelection>
       </FormStyled>
@@ -110,20 +111,18 @@ const SizeSelection = styled.select`
   width: 125px;
   height: 28px;
   margin-top: 16px;
-  border-radius: 8px;
-  border: 1px solid #6b6056;
+  border: none;
   padding-bottom: 2px;
-  background: #dad7d5;
+  background: var(--quarternary);
 `
 
 const ButtonStyled = styled.button`
-  background: #6b6056;
-  color: white;
+  background: var(--tertiary);
+  color: var(--primary);
   border: none;
-  padding: 12px;
+  padding: 8px 12px;
   width: 125px;
   margin-top: 12px;
-  border-radius: 10px;
   font-size: 0.75em;
   font-weight: bold;
 `

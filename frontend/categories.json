@@ -1,8 +1,131 @@
 [
-  { "name": "hoodies", "description": "female", "id": 1 },
-  { "name": "hoodies", "description": "male", "id": 2 },
-  { "name": "shirts", "description": "female", "id": 3 },
-  { "name": "shirts", "description": "male", "id": 4 },
-  { "name": "jeans", "description": "female", "id": 5 },
-  { "name": "jeans", "description": "male", "id": 6 }
+  {
+    "name": "sweatshirts & hoodies",
+    "description": "female",
+    "id": 1,
+    "subcategories": [
+      { "name": "sweatshirts", "id": 1 },
+      { "name": "hoodies", "id": 2 }
+    ]
+  },
+  {
+    "name": "sweatshirts & hoodies",
+    "description": "male",
+    "id": 2,
+    "subcategories": [
+      { "name": "sweatshirts", "id": 1 },
+      { "name": "hoodies", "id": 2 }
+    ]
+  },
+  {
+    "name": "t-shirts",
+    "description": "female",
+    "id": 3,
+    "subcategories": [
+      { "name": "long-sleeve", "id": 1 },
+      { "name": "short-sleeve", "id": 2 }
+    ]
+  },
+  {
+    "name": "t-shirts",
+    "description": "male",
+    "id": 4,
+    "subcategories": [
+      { "name": "long-sleeve", "id": 1 },
+      { "name": "short-sleeve", "id": 2 }
+    ]
+  },
+  {
+    "name": "tops",
+    "description": "female",
+    "id": 5,
+    "subcategories": [
+      { "name": "blouses", "id": 1 },
+      { "name": "tops", "id": 2 },
+      { "name": "crop-tops", "id": 2 }
+    ]
+  },
+  {
+    "name": "shirts",
+    "description": "male",
+    "id": 6,
+    "subcategories": [
+      { "name": "long-sleeve", "id": 1 },
+      { "name": "short-sleeve", "id": 2 }
+    ]
+  },
+  { "name": "jeans", "description": "female", "id": 7, "subcategories": [] },
+  {
+    "name": "jeans",
+    "description": "male",
+    "id": 8,
+    "subcategories": []
+  },
+  {
+    "name": "trousers",
+    "description": "female",
+    "id": 9,
+    "subcategories": [
+      { "name": "wide-leg", "id": 1 },
+      { "name": "cropped", "id": 2 },
+      { "name": "tailored", "id": 3 },
+      { "name": "joggers", "id": 4 }
+    ]
+  },
+  {
+    "name": "trousers",
+    "description": "male",
+    "id": 10,
+    "subcategories": [
+      { "name": "causal", "id": 1 },
+      { "name": "tailored", "id": 2 },
+      { "name": "joggers", "id": 3 }
+    ]
+  },
+  { "name": "shorts", "description": "female", "id": 11, "subcategories": [] },
+  { "name": "shorts", "description": "male", "id": 12, "subcategories": [] },
+  {
+    "name": "skirts",
+    "description": "female",
+    "id": 13,
+    "subcategories": [
+      { "name": "mini", "id": 1 },
+      { "name": "midi", "id": 2 },
+      { "name": "max", "id": 3 }
+    ]
+  },
+  {
+    "name": "dresses",
+    "description": "female",
+    "id": 14,
+    "subcategories": [
+      { "name": "mini", "id": 1 },
+      { "name": "midi", "id": 2 },
+      { "name": "max", "id": 3 }
+    ]
+  },
+  { "name": "jumpers", "description": "female", "id": 15, "subcategories": [] },
+  { "name": "jumpers", "description": "male", "id": 16, "subcategories": [] },
+  { "name": "blazers", "description": "female", "id": 17, "subcategories": [] },
+  { "name": "blazers", "description": "male", "id": 18, "subcategories": [] },
+  { "name": "jackets", "description": "female", "id": 19, "subcategories": [] },
+  { "name": "jackets", "description": "male", "id": 20, "subcategories": [] },
+  {
+    "name": "coats",
+    "description": "female",
+    "id": 21,
+    "subcategories": [
+      { "name": "puffer", "id": 1 },
+      { "name": "casual", "id": 2 }
+    ]
+  },
+  {
+    "name": "coats",
+    "description": "male",
+    "id": 22,
+    "subcategories": [
+      { "name": "puffer", "id": 1 },
+      { "name": "casual", "id": 2 }
+    ]
+  }
 ]

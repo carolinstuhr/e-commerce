@@ -8,6 +8,7 @@ import ShoppingCart from './ShoppingCart'
 
 export default function App() {
   const [categorySelected, setCategorySelected] = useState('')
+  const [subcategorySelected, setSubcategorySelected] = useState('')
   const [shoppingCart, setShoppingCart] = useState([])
   const [wasAmountUpated, setWasAmountUpdated] = useState(false)
   const [isRedirectOptionVisible, setIsRedirectOptionVisible] = useState(false)
@@ -16,7 +17,6 @@ export default function App() {
     fetch('http://localhost:8040/shoppingcart')
       .then((res) => res.json())
       .then((data) => setShoppingCart(data))
-      .then(() => console.log('done'))
   }, [wasAmountUpated, isRedirectOptionVisible])
 
   return (
@@ -24,11 +24,16 @@ export default function App() {
       <GlobalStyles />
       <Switch>
         <Route exact path="/">
-          <Home clickCategory={setCategory} />
+          <Home
+            setCategorySelected={setCategorySelected}
+            categorySelected={categorySelected}
+            setSubcategorySelected={setSubcategorySelected}
+          />
         </Route>
         <Route path="/products">
           <Products
             categorySelected={categorySelected}
+            subcategorySelected={subcategorySelected}
             isRedirectOptionVisible={isRedirectOptionVisible}
             setIsRedirectOptionVisible={setIsRedirectOptionVisible}
           />
@@ -43,11 +48,8 @@ export default function App() {
       <Footer
         setCategorySelected={setCategorySelected}
         shoppingCart={shoppingCart}
+        setSubcategorySelected={setSubcategorySelected}
       />
     </>
   )
-
-  function setCategory(categoryId) {
-    setCategorySelected(categoryId)
-  }
 }

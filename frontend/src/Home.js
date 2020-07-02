@@ -1,40 +1,64 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import CategoriesList from './CategoriesList'
 
-export default function Home({ clickCategory }) {
+export default function Home({
+  setCategorySelected,
+  categorySelected,
+  setSubcategorySelected,
+}) {
   const [categories, setCategories] = useState([])
+  const [selectedGender, setSelectedGender] = useState('female')
 
   useEffect(() => {
     fetch('http://localhost:8040/categories')
       .then((res) => res.json())
       .then((data) => setCategories(data))
   }, [])
+
   return (
     <>
       <header>Categories</header>
       <main>
         <CenteredContainer>
-          <p>Women's</p>
-          {categories
-            .filter((category) => category.description === 'female')
-            .map((category) => (
-              <LinkStyled to="/products">
-                <ButtonStyled onClick={() => clickCategory(category.id)}>
-                  {category.name}
-                </ButtonStyled>
-              </LinkStyled>
-            ))}
-          <p>Men's</p>
-          {categories
-            .filter((category) => category.description === 'male')
-            .map((category) => (
-              <LinkStyled to="/products">
-                <ButtonStyled onClick={() => clickCategory(category.id)}>
-                  {category.name}
-                </ButtonStyled>
-              </LinkStyled>
-            ))}
+          <div>
+            <ParagraphWomen
+              selectedGender={selectedGender}
+              onClick={() => setSelectedGender('female')}
+            >
+              Women's
+            </ParagraphWomen>
+            <ParagraphMen
+              selectedGender={selectedGender}
+              onClick={() => setSelectedGender('male')}
+            >
+              Men's
+            </ParagraphMen>
+          </div>
+          {selectedGender === 'female' &&
+            categories
+              .filter((category) => category.description === 'female')
+              .map((category) => (
+                <CategoriesList
+                  category={category}
+                  setCategorySelected={setCategorySelected}
+                  setSubcategorySelected={setSubcategorySelected}
+                  categorySelected={categorySelected}
+                  key={category.id}
+                />
+              ))}
+          {selectedGender === 'male' &&
+            categories
+              .filter((category) => category.description === 'male')
+              .map((category) => (
+                <CategoriesList
+                  category={category}
+                  setCategorySelected={setCategorySelected}
+                  setSubcategorySelected={setSubcategorySelected}
+                  categorySelected={categorySelected}
+                  key={category.id}
+                />
+              ))}
         </CenteredContainer>
       </main>
     </>
@@ -42,33 +66,40 @@ export default function Home({ clickCategory }) {
 }
 
 const CenteredContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  h2,
-  p {
-    text-align: center;
+  text-align: center;
+  div {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
-  }
-  p {
-    font-weight: 300;
-    font-size: 18px;
+    margin-bottom: 16px;
+    margin-left: -4px;
+    p {
+      font-weight: 400;
+      font-size: 20px;
+      width: 187px;
+      padding: 8px;
+    }
   }
 `
 
-const ButtonStyled = styled.button`
-  background: #6b6056;
-  color: #ecebea;
-  border: none;
-  padding: 8px;
-  width: 300px;
-  height: 50px;
-  margin-top: 8px;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 200;
+const ParagraphWomen = styled.p`
+  background: ${(props) =>
+    props.selectedGender === 'female'
+      ? 'rgba(215, 206, 199, 1)'
+      : 'rgba(215, 206, 199, 0.3)'};
+  color: ${(props) =>
+    props.selectedGender === 'female'
+      ? 'rgba(86, 86, 86, 1)'
+      : 'rgba(86, 86, 86, 0.7)'};
 `
-const LinkStyled = styled(Link)`
-  text-decoration: none;
-  color: #ecebea;
+
+const ParagraphMen = styled.p`
+  background: ${(props) =>
+    props.selectedGender === 'male'
+      ? 'rgba(215, 206, 199, 1)'
+      : 'rgba(215, 206, 199, 0.3)'};
+  color: ${(props) =>
+    props.selectedGender === 'male'
+      ? 'rgba(86, 86, 86, 1)'
+      : 'rgba(86, 86, 86, 0.7)'};
 `

@@ -9,6 +9,7 @@ export default function Products({
   categorySelected,
   isRedirectOptionVisible,
   setIsRedirectOptionVisible,
+  subcategorySelected,
 }) {
   const [products, setProducts] = useState([])
   const [areDetailsVisible, setAreDetailsVisible] = useState(false)
@@ -24,20 +25,30 @@ export default function Products({
     <>
       <header>Products</header>
       <main>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <CenteredContainer
             areDetailsVisible={areDetailsVisible}
             isRedirectOptionVisible={isRedirectOptionVisible}
+            key={index}
           >
             <>
-              {categorySelected === product.categoryId && (
-                <ProductsList
-                  product={product}
-                  showDetails={showDetails}
-                  setIsRedirectOptionVisible={setIsRedirectOptionVisible}
-                />
-              )}
-              {categorySelected === '' && (
+              {subcategorySelected === 0
+                ? categorySelected === product.categoryId && (
+                    <ProductsList
+                      product={product}
+                      showDetails={showDetails}
+                      setIsRedirectOptionVisible={setIsRedirectOptionVisible}
+                    />
+                  )
+                : categorySelected === product.categoryId &&
+                  subcategorySelected === product.subcategoryId && (
+                    <ProductsList
+                      product={product}
+                      showDetails={showDetails}
+                      setIsRedirectOptionVisible={setIsRedirectOptionVisible}
+                    />
+                  )}
+              {categorySelected === '' && subcategorySelected === '' && (
                 <ProductsList
                   product={product}
                   showDetails={showDetails}
