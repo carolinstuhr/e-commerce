@@ -24,22 +24,19 @@ export default function CategoriesList({
             {category.name}
           </ButtonStyled>
           {categorySelected === category.id && isSubcategoryVisible && (
-            <>
-              <LinkStyled to="/products">
-                <ParagraphStyled onClick={() => setSubcategorySelected(0)}>
-                  all
-                </ParagraphStyled>
-              </LinkStyled>
+            <StyledSection>
+              <ParagraphStyled onClick={() => setSubcategorySelected(0)}>
+                <LinkStyled to="/products">all</LinkStyled>
+              </ParagraphStyled>
               {category.subcategories.map((subcategory) => (
-                <LinkStyled to="/products">
-                  <ParagraphStyled
-                    onClick={() => setSubcategorySelected(subcategory.id)}
-                  >
-                    {subcategory.name}
-                  </ParagraphStyled>
-                </LinkStyled>
+                <ParagraphStyled
+                  onClick={() => setSubcategorySelected(subcategory.id)}
+                  key={subcategory.id}
+                >
+                  <LinkStyled to="/products">{subcategory.name}</LinkStyled>
+                </ParagraphStyled>
               ))}
-            </>
+            </StyledSection>
           )}
         </>
       )}
@@ -72,10 +69,18 @@ const ButtonStyled = styled.button`
 `
 const LinkStyled = styled(Link)`
   text-decoration: none;
-  color: #ecebea;
 `
 const ParagraphStyled = styled.p`
   font-size: 16px;
   font-weight: 200;
-  margin-bottom: 8px;
+  margin-top: 8px;
+`
+
+const StyledSection = styled.section`
+  p:last-of-type {
+    margin-bottom: 16px;
+  }
+  p:first-of-type {
+    margin-top: 4px;
+  }
 `

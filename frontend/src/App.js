@@ -17,7 +17,6 @@ export default function App() {
     fetch('http://localhost:8040/shoppingcart')
       .then((res) => res.json())
       .then((data) => setShoppingCart(data))
-      .then(() => console.log('done'))
   }, [wasAmountUpated, isRedirectOptionVisible])
 
   return (
@@ -49,6 +48,7 @@ export default function App() {
       <Footer
         setCategorySelected={setCategorySelected}
         shoppingCart={shoppingCart}
+        setSubcategorySelected={setSubcategorySelected}
       />
     </>
   )

@@ -25,10 +25,11 @@ export default function Products({
     <>
       <header>Products</header>
       <main>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <CenteredContainer
             areDetailsVisible={areDetailsVisible}
             isRedirectOptionVisible={isRedirectOptionVisible}
+            key={index}
           >
             <>
               {subcategorySelected === 0

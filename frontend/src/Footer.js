@@ -5,7 +5,11 @@ import { RiHome2Line } from 'react-icons/ri'
 import { RiShirtLine } from 'react-icons/ri'
 import { RiShoppingCartLine } from 'react-icons/ri'
 
-export default function Footer({ setCategorySelected, shoppingCart }) {
+export default function Footer({
+  setCategorySelected,
+  shoppingCart,
+  setSubcategorySelected,
+}) {
   return (
     <FooterStyled>
       <LinkStyled exact to="/" activeClassName="selected">
@@ -22,6 +26,7 @@ export default function Footer({ setCategorySelected, shoppingCart }) {
   )
   function showAll() {
     setCategorySelected('')
+    setSubcategorySelected('')
   }
 }
 const FooterStyled = styled.footer`

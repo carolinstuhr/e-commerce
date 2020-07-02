@@ -24,8 +24,10 @@ export default function ProductsList({
           }
         >
           <option>Select Size...</option>
-          {product.size.map((size) => (
-            <option value={size}>{size}</option>
+          {product.size.map((size, index) => (
+            <option value={size} key={index}>
+              {size}
+            </option>
           ))}
         </SizeSelection>
       </FormStyled>

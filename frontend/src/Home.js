@@ -16,7 +16,6 @@ export default function Home({
       .then((data) => setCategories(data))
   }, [])
 
-  console.log(categories)
   return (
     <>
       <header>Categories</header>
@@ -45,6 +44,7 @@ export default function Home({
                   setCategorySelected={setCategorySelected}
                   setSubcategorySelected={setSubcategorySelected}
                   categorySelected={categorySelected}
+                  key={category.id}
                 />
               ))}
           {selectedGender === 'male' &&
@@ -56,6 +56,7 @@ export default function Home({
                   setCategorySelected={setCategorySelected}
                   setSubcategorySelected={setSubcategorySelected}
                   categorySelected={categorySelected}
+                  key={category.id}
                 />
               ))}
         </CenteredContainer>
