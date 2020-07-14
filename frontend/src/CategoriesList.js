@@ -67,7 +67,7 @@ export default function CategoriesList({
       setTimeout(() => {
         setIsSubcategoryVisible(true)
         setCategorySelected(categoryId)
-      }, 750)
+      }, 500)
     } else {
       setIsSubcategoryVisible(true)
       setCategorySelected(categoryId)
@@ -113,7 +113,7 @@ const StyledSection = styled.section`
 
   &.fade-enter-active {
     max-height: 150px;
-    transition: max-height 500ms;
+    transition: max-height 500ms ease-in;
   }
 
   &.fade-exit {
@@ -122,6 +122,6 @@ const StyledSection = styled.section`
 
   &.fade-exit-active {
     min-height: 0;
-    transition: min-height 500ms;
+    transition: min-height 500ms ease-in;
   }
 `
