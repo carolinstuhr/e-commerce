@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
+import { CSSTransition } from 'react-transition-group'
 
 export default function CategoriesList({
   category,
   setCategorySelected,
   setSubcategorySelected,
   categorySelected,
+  isSubcategoryVisible,
+  setIsSubcategoryVisible,
 }) {
-  const [isSubcategoryVisible, setIsSubcategoryVisible] = useState(false)
-
   return (
     <>
       {category.subcategories.length === 0 ? (
@@ -23,21 +24,30 @@ export default function CategoriesList({
           <ButtonStyled onClick={() => subcategoryVisible(category.id)}>
             {category.name}
           </ButtonStyled>
-          {categorySelected === category.id && isSubcategoryVisible && (
+          <CSSTransition
+            in={categorySelected === category.id}
+            classNames="fade"
+            timeout={500}
+            unmountOnExit
+          >
             <StyledSection>
-              <ParagraphStyled onClick={() => setSubcategorySelected(0)}>
-                <LinkStyled to="/products">all</LinkStyled>
-              </ParagraphStyled>
-              {category.subcategories.map((subcategory) => (
-                <ParagraphStyled
-                  onClick={() => setSubcategorySelected(subcategory.id)}
-                  key={subcategory.id}
-                >
-                  <LinkStyled to="/products">{subcategory.name}</LinkStyled>
-                </ParagraphStyled>
-              ))}
+              {isSubcategoryVisible && (
+                <>
+                  <ParagraphStyled onClick={() => setSubcategorySelected(0)}>
+                    <LinkStyled to="/products">all</LinkStyled>
+                  </ParagraphStyled>
+                  {category.subcategories.map((subcategory) => (
+                    <ParagraphStyled
+                      onClick={() => setSubcategorySelected(subcategory.id)}
+                      key={subcategory.id}
+                    >
+                      <LinkStyled to="/products">{subcategory.name}</LinkStyled>
+                    </ParagraphStyled>
+                  ))}
+                </>
+              )}
             </StyledSection>
-          )}
+          </CSSTransition>
         </>
       )}
     </>
@@ -48,8 +58,20 @@ export default function CategoriesList({
   }
 
   function subcategoryVisible(categoryId) {
-    setCategorySelected(categoryId)
-    setIsSubcategoryVisible(!isSubcategoryVisible)
+    if (categoryId === categorySelected) {
+      setIsSubcategoryVisible(false)
+      setCategorySelected('')
+    } else if (categoryId !== categorySelected && isSubcategoryVisible) {
+      setCategorySelected('')
+      setIsSubcategoryVisible(false)
+      setTimeout(() => {
+        setIsSubcategoryVisible(true)
+        setCategorySelected(categoryId)
+      }, 500)
+    } else {
+      setIsSubcategoryVisible(true)
+      setCategorySelected(categoryId)
+    }
   }
 }
 
@@ -69,6 +91,7 @@ const ButtonStyled = styled.button`
 `
 const LinkStyled = styled(Link)`
   text-decoration: none;
+  z-index: 4;
 `
 const ParagraphStyled = styled.p`
   font-size: 16px;
@@ -82,5 +105,23 @@ const StyledSection = styled.section`
   }
   p:first-of-type {
     margin-top: 4px;
+  }
+
+  &.fade-enter {
+    max-height: 0;
+  }
+
+  &.fade-enter-active {
+    max-height: 150px;
+    transition: max-height 500ms ease-in;
+  }
+
+  &.fade-exit {
+    min-height: 50px;
+  }
+
+  &.fade-exit-active {
+    min-height: 0;
+    transition: min-height 500ms ease-in;
   }
 `
