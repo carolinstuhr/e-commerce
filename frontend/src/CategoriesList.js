@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import { CSSTransition } from 'react-transition-group'
@@ -8,9 +8,9 @@ export default function CategoriesList({
   setCategorySelected,
   setSubcategorySelected,
   categorySelected,
+  isSubcategoryVisible,
+  setIsSubcategoryVisible,
 }) {
-  const [isSubcategoryVisible, setIsSubcategoryVisible] = useState(false)
-
   return (
     <>
       {category.subcategories.length === 0 ? (
@@ -25,13 +25,13 @@ export default function CategoriesList({
             {category.name}
           </ButtonStyled>
           <CSSTransition
-            in={isSubcategoryVisible}
+            in={categorySelected === category.id}
             classNames="fade"
-            timeout={200}
+            timeout={500}
             unmountOnExit
           >
             <StyledSection>
-              {categorySelected === category.id && (
+              {isSubcategoryVisible && (
                 <>
                   <ParagraphStyled onClick={() => setSubcategorySelected(0)}>
                     <LinkStyled to="/products">all</LinkStyled>
@@ -58,28 +58,20 @@ export default function CategoriesList({
   }
 
   function subcategoryVisible(categoryId) {
-    // if (categoryId === categorySelected) {
-    //   setIsSubcategoryVisible(!isSubcategoryVisible)
-    //   setCategorySelected('')
-    // } else {
-    setIsSubcategoryVisible(!isSubcategoryVisible)
-    setCategorySelected(categoryId)
-
-    // setCategorySelected(categoryId)
-
-    // if (isSubcategoryVisible.includes(categoryId)) {
-    //   const index = isSubcategoryVisible.indexOf(categoryId)
-    //   console.log(index)
-    //   console.log(isSubcategoryVisible)
-    //   setIsSubcategoryVisible([
-    //     ...isSubcategoryVisible.slice(0, index),
-    //     ...isSubcategoryVisible.slice(index + 1),
-    //   ])
-    //   console.log(index)
-    // } else {
-    //   setIsSubcategoryVisible([...isSubcategoryVisible, categoryId])
-    //   console.log(isSubcategoryVisible)
-    // }
+    if (categoryId === categorySelected) {
+      setIsSubcategoryVisible(false)
+      setCategorySelected('')
+    } else if (categoryId !== categorySelected && isSubcategoryVisible) {
+      setCategorySelected('')
+      setIsSubcategoryVisible(false)
+      setTimeout(() => {
+        setIsSubcategoryVisible(true)
+        setCategorySelected(categoryId)
+      }, 750)
+    } else {
+      setIsSubcategoryVisible(true)
+      setCategorySelected(categoryId)
+    }
   }
 }
 
@@ -116,20 +108,20 @@ const StyledSection = styled.section`
   }
 
   &.fade-enter {
-    height: 0;
+    max-height: 0;
   }
 
   &.fade-enter-active {
-    height: 100px;
-    transition: height 200ms;
+    max-height: 150px;
+    transition: max-height 500ms;
   }
 
   &.fade-exit {
-    height: 100px;
+    min-height: 50px;
   }
 
   &.fade-exit-active {
-    height: 0;
-    transition: height 200ms;
+    min-height: 0;
+    transition: min-height 500ms;
   }
 `

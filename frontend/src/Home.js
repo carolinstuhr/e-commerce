@@ -9,6 +9,7 @@ export default function Home({
 }) {
   const [categories, setCategories] = useState([])
   const [selectedGender, setSelectedGender] = useState('female')
+  const [isSubcategoryVisible, setIsSubcategoryVisible] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:8040/categories')
@@ -45,6 +46,8 @@ export default function Home({
                   setSubcategorySelected={setSubcategorySelected}
                   categorySelected={categorySelected}
                   key={category.id}
+                  isSubcategoryVisible={isSubcategoryVisible}
+                  setIsSubcategoryVisible={setIsSubcategoryVisible}
                 />
               ))}
           {selectedGender === 'male' &&
@@ -57,6 +60,8 @@ export default function Home({
                   setSubcategorySelected={setSubcategorySelected}
                   categorySelected={categorySelected}
                   key={category.id}
+                  isSubcategoryVisible={isSubcategoryVisible}
+                  setIsSubcategoryVisible={setIsSubcategoryVisible}
                 />
               ))}
         </CenteredContainer>
